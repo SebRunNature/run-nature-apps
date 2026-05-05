@@ -757,10 +757,135 @@ footer a { color: var(--g4); text-decoration: none; }
   <p><a href="https://run-nature.com">run-nature.com</a></p>
 </footer>
 
+<!-- ═══════ DISCLAIMER OVERLAY ═══════ -->
+<div id="disclaimer-overlay" style="
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(10,22,15,0.92);
+  backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  font-family:'DM Sans',sans-serif;
+">
+  <div style="
+    background:#fafaf8;
+    border-radius:12px;
+    max-width:580px;width:100%;
+    max-height:90vh;overflow-y:auto;
+    box-shadow:0 32px 80px rgba(0,0,0,0.4);
+  ">
+    <!-- En-tête -->
+    <div style="background:#1b4332;border-radius:12px 12px 0 0;padding:24px 28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+        <span style="font-size:18px;">⚠️</span>
+        <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#52b788;">Avant de continuer</span>
+      </div>
+      <p style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:white;margin:0;letter-spacing:-0.5px;">Avertissement & Limitation de responsabilité</p>
+    </div>
+
+    <!-- Corps -->
+    <div style="padding:28px 28px 0;">
+
+      <p style="font-size:13px;line-height:1.75;color:#3a3a36;margin-bottom:18px;">
+        En accédant à cette page et en utilisant les outils proposés par <strong>Run Nature</strong> (ci-après « les Apps »), vous reconnaissez avoir lu, compris et accepté sans réserve les conditions suivantes.
+      </p>
+
+      <div style="background:#f0ede8;border-radius:8px;padding:18px 20px;margin-bottom:16px;">
+        <p style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2d6a4f;margin-bottom:10px;">1. Applications fournies « en l'état »</p>
+        <p style="font-size:12.5px;line-height:1.75;color:#5a5a56;margin:0;">
+          Les Apps sont mises à disposition <strong>gratuitement et sans aucune garantie</strong>, expresse ou implicite, quant à leur exactitude, fiabilité, disponibilité ou adéquation à un usage particulier. Elles peuvent contenir des erreurs ou des imprécisions.
+        </p>
+      </div>
+
+      <div style="background:#f0ede8;border-radius:8px;padding:18px 20px;margin-bottom:16px;">
+        <p style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2d6a4f;margin-bottom:10px;">2. Responsabilité exclusive de l'utilisateur</p>
+        <p style="font-size:12.5px;line-height:1.75;color:#5a5a56;margin:0;">
+          L'utilisation de ces Apps se fait <strong>sous votre entière et seule responsabilité</strong>. Vous êtes seul(e) juge de votre condition physique, de votre niveau d'entraînement et de l'adéquation des programmes proposés à votre état de santé. Consultez un médecin avant de débuter tout programme sportif intensif.
+        </p>
+      </div>
+
+      <div style="background:#f0ede8;border-radius:8px;padding:18px 20px;margin-bottom:16px;">
+        <p style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2d6a4f;margin-bottom:10px;">3. Exclusion totale de responsabilité</p>
+        <p style="font-size:12.5px;line-height:1.75;color:#5a5a56;margin:0;">
+          <strong>Sébastien / Run Nature</strong>, ainsi que le blog <strong>run-nature.com</strong>, déclinent toute responsabilité pour tout dommage direct, indirect, accessoire ou consécutif, notamment : blessure physique, perte ou corruption de données, dommage matériel, préjudice moral, résultant de l'utilisation ou de l'incapacité à utiliser les Apps, même en cas de négligence.
+        </p>
+      </div>
+
+      <div style="background:#f0ede8;border-radius:8px;padding:18px 20px;margin-bottom:16px;">
+        <p style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2d6a4f;margin-bottom:10px;">4. Données personnelles</p>
+        <p style="font-size:12.5px;line-height:1.75;color:#5a5a56;margin:0;">
+          Les Apps fonctionnent <strong>100% hors ligne</strong>. Aucune donnée n'est collectée, transmise ou stockée sur un serveur externe. Vos données restent sur votre appareil. Le contact via WhatsApp est volontaire et ne donne lieu à aucune utilisation commerciale de vos coordonnées.
+        </p>
+      </div>
+
+      <div style="background:#f0ede8;border-radius:8px;padding:18px 20px;margin-bottom:20px;">
+        <p style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2d6a4f;margin-bottom:10px;">5. Droit applicable</p>
+        <p style="font-size:12.5px;line-height:1.75;color:#5a5a56;margin:0;">
+          Le présent avertissement est soumis au droit luxembourgeois. Tout litige relèvera de la compétence exclusive des juridictions du Grand-Duché de Luxembourg.
+        </p>
+      </div>
+
+      <!-- Case à cocher -->
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:20px;padding:16px;background:#eaf7f0;border:1px solid #95d5b2;border-radius:8px;">
+        <input type="checkbox" id="disc-check" style="width:18px;height:18px;margin-top:2px;accent-color:#1b4332;flex-shrink:0;cursor:pointer;">
+        <span style="font-size:13px;line-height:1.6;color:#1a1a18;">
+          J'ai lu et j'accepte cet avertissement. Je reconnais utiliser ces Apps <strong>sous ma propre responsabilité</strong> et ne pourrai tenir Run Nature ou Sébastien responsable d'aucun dommage.
+        </span>
+      </label>
+
+    </div>
+
+    <!-- Bouton -->
+    <div style="padding:0 28px 28px;">
+      <button id="disc-btn" onclick="acceptDisclaimer()" disabled style="
+        width:100%;padding:16px;
+        background:#ccc;color:white;border:none;
+        border-radius:8px;
+        font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
+        letter-spacing:1.5px;text-transform:uppercase;
+        cursor:not-allowed;
+        transition:background .2s;
+      ">Cocher la case pour continuer</button>
+      <p style="font-size:11px;color:#aaa;text-align:center;margin-top:10px;letter-spacing:.5px;">
+        Cette acceptation est enregistrée localement sur votre appareil.
+      </p>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
   const WA = '352691135932';
+
+  /* ── DISCLAIMER ── */
+  (function() {
+    if (localStorage.getItem('rn-disclaimer-v1') === 'accepted') {
+      document.getElementById('disclaimer-overlay').style.display = 'none';
+    }
+    var chk = document.getElementById('disc-check');
+    var btn = document.getElementById('disc-btn');
+    chk.addEventListener('change', function() {
+      if (chk.checked) {
+        btn.disabled = false;
+        btn.style.background = '#1b4332';
+        btn.style.cursor = 'pointer';
+        btn.textContent = 'J\'accepte — Accéder aux Apps';
+      } else {
+        btn.disabled = true;
+        btn.style.background = '#ccc';
+        btn.style.cursor = 'not-allowed';
+        btn.textContent = 'Cocher la case pour continuer';
+      }
+    });
+  })();
+
+  function acceptDisclaimer() {
+    localStorage.setItem('rn-disclaimer-v1', 'accepted');
+    var o = document.getElementById('disclaimer-overlay');
+    o.style.transition = 'opacity .4s ease';
+    o.style.opacity = '0';
+    setTimeout(function() { o.style.display = 'none'; }, 400);
+  }
 
   function openWA(app) {
     var msg = encodeURIComponent(
