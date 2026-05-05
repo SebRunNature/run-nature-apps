@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mes Apps Trail — Run Nature Luxembourg</title>
+<meta name="description" content="6 outils trail gratuits, sans inscription, sans pub, 100% hors ligne. Créés par un traileur luxembourgeois.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════
+   TOKENS
+═══════════════════════════════════ */
+:root {
+  --g0: #0a160f;   /* noir forêt */
+  --g1: #111d15;
+  --g2: #1b4332;   /* vert foncé */
+  --g3: #2d6a4f;
+  --g4: #52b788;   /* vert clair */
+  --g5: #95d5b2;
+  --g6: #d8f3dc;
+  --cream: #f5f2ec;
+  --warm: #eae6df;
+  --txt: #0e1a12;
+  --muted: #6b7a6f;
+  --wa: #25d366;
+}
+
+/* ═══════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--txt);
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════
+   NAV
+═══════════════════════════════════ */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--g0);
+  border-bottom: 1px solid rgba(82,183,136,.12);
+  padding: 0 48px;
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: white; text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--g4);
+  display: inline-block;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.4; transform:scale(.7); }
+}
+
+.nav-back {
+  font-size: 11px; letter-spacing: 1.5px;
+  color: rgba(255,255,255,.35); text-decoration:none;
+  transition: color .2s;
+  font-family:'DM Sans',sans-serif;
+}
+.nav-back:hover { color: var(--g4); }
+
+/* ═══════════════════════════════════
+   HERO — dark, typographie bold
+═══════════════════════════════════ */
+.hero {
+  background: var(--g0);
+  min-height: 88vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 80px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* grille déco en fond */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(82,183,136,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(82,183,136,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* cercle glow */
+.hero-glow {
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(82,183,136,.10) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 780px;
+  text-align: center;
+  position: relative;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(82,183,136,.1);
+  border: 1px solid rgba(82,183,136,.22);
+  border-radius: 40px;
+  padding: 7px 18px;
+  margin-bottom: 36px;
+}
+
+.hero-eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--g4);
+}
+
+.hero-eyebrow span {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--g4);
+}
+
+/* TITRE — Syne ultra bold, grande taille */
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(52px, 9vw, 100px);
+  font-weight: 800;
+  line-height: .95;
+  color: white;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+}
+
+.hero-title-line2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(36px, 6vw, 68px);
+  font-weight: 400;
+  color: var(--g4);
+  letter-spacing: -1px;
+  display: block;
+  margin-bottom: 36px;
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,.45);
+  max-width: 440px;
+  margin: 0 auto 48px;
+  line-height: 1.75;
+}
+
+.hero-tags {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+}
+
+.hero-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+/* scroll indicator */
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.2);
+  font-size: 10px; letter-spacing: 2px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ═══════════════════════════════════
+   SECTION APPS
+═══════════════════════════════════ */
+.apps-section {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 96px 48px 100px;
+}
+
+.section-header {
+  display: flex; align-items: baseline; gap: 20px;
+  margin-bottom: 56px;
+}
+
+.section-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--g4);
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(to right, var(--warm), transparent);
+}
+
+/* ═══════════════════════════════════
+   GRILLE APPS — layout mixte
+═══════════════════════════════════ */
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+/* carte large = 7 cols */
+.app-card        { grid-column: span 4; }
+.app-card.wide   { grid-column: span 6; }
+.app-card.medium { grid-column: span 6; }
+
+.app-card {
+  background: white;
+  border: 1px solid rgba(0,0,0,.07);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+  position: relative;
+}
+
+.app-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(27,67,50,.13);
+}
+
+/* ligne colorée en haut */
+.app-card::before {
+  content: '';
+  position: absolute; top:0; left:0; right:0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--g2), var(--g4));
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+.app-card:hover::before { opacity: 1; }
+
+/* IMAGE */
+.app-img-wrap {
+  width: 100%; overflow: hidden;
+  background: var(--warm);
+}
+
+.app-card.wide   .app-img-wrap { height: 220px; }
+.app-card.medium .app-img-wrap { height: 200px; }
+.app-card        .app-img-wrap { height: 160px; }
+
+.app-img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+  transition: transform .5s ease;
+}
+
+.app-card:hover .app-img { transform: scale(1.04); }
+
+.app-img-placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--g0) 0%, var(--g2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 52px;
+}
+
+/* BODY */
+.app-body {
+  padding: 22px 24px 26px;
+  flex: 1; display: flex; flex-direction: column;
+}
+
+/* BADGES */
+.app-badges {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.badge {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 4px;
+}
+
+.b-free   { background: #e6f7ee; color: #1b7a45; }
+.b-h      { background: #e8f0fe; color: #2d4db5; }
+.b-f      { background: #fce4ec; color: #b5234d; }
+.b-new    { background: #fff8e1; color: #b56f00; }
+.b-off    { background: #f3e5f5; color: #7a1fa2; }
+
+/* NOM */
+.app-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--txt); line-height: 1.35;
+  margin-bottom: 8px;
+}
+
+.app-card.wide .app-name { font-size: 18px; }
+
+/* DESC */
+.app-desc {
+  font-size: 13px; line-height: 1.75;
+  color: var(--muted);
+  flex: 1; margin-bottom: 20px;
+}
+
+/* FOOTER CARTE */
+.app-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+}
+
+.app-free-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--g3);
+  display: flex; align-items: center; gap: 6px;
+}
+
+.app-free-label::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--g4);
+  display: inline-block;
+}
+
+/* BOUTON WHATSAPP */
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--wa);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+
+.btn-wa:hover {
+  background: #1db954;
+  transform: scale(1.03);
+}
+
+/* ═══════════════════════════════════
+   SECTION CONTACT
+═══════════════════════════════════ */
+.contact-section {
+  background: var(--g0);
+  padding: 80px 48px;
+  position: relative; overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(82,183,136,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(82,183,136,.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.contact-inner {
+  max-width: 600px; margin: 0 auto;
+  text-align: center; position: relative;
+}
+
+.contact-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--g4);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.contact-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 800; line-height: 1.05;
+  color: white;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+.contact-title em {
+  font-style: italic;
+  color: var(--g4);
+  font-weight: 400;
+}
+
+.contact-desc {
+  font-size: 14px; line-height: 1.75;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 36px;
+}
+
+.btn-wa-big {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--wa);
+  color: white; border: none;
+  padding: 18px 36px;
+  border-radius: 8px;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: background .2s, transform .2s;
+  box-shadow: 0 8px 32px rgba(37,211,102,.25);
+}
+
+.btn-wa-big:hover {
+  background: #1db954;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(37,211,102,.35);
+}
+
+.contact-note {
+  margin-top: 16px;
+  font-size: 12px;
+  color: rgba(255,255,255,.22);
+  letter-spacing: .5px;
+}
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer {
+  background: var(--g1);
+  border-top: 1px solid rgba(82,183,136,.08);
+  padding: 28px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+footer p {
+  font-size: 11px; letter-spacing: 1px;
+  color: rgba(255,255,255,.22);
+}
+
+footer a { color: var(--g4); text-decoration: none; }
+
+/* ═══════════════════════════════════
+   TOAST
+═══════════════════════════════════ */
+.toast {
+  position: fixed; bottom: 32px; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--g2); color: white;
+  padding: 12px 28px; border-radius: 6px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 1px;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  z-index: 999; pointer-events: none; white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ═══════════════════════════════════
+   ANIMATIONS ENTRÉE
+═══════════════════════════════════ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width: 960px) {
+  .app-card, .app-card.wide, .app-card.medium {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 640px) {
+  nav { padding: 0 20px; }
+  .hero { padding: 60px 24px; min-height: 80vh; }
+  .apps-section { padding: 64px 20px 72px; }
+  .app-card, .app-card.wide, .app-card.medium {
+    grid-column: span 12;
+  }
+  .contact-section { padding: 60px 24px; }
+  footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav>
+  <a class="nav-logo" href="https://run-nature.com">
+    <span class="nav-dot"></span>
+    Run Nature
+  </a>
+  <a class="nav-back" href="https://run-nature.com">← retour au blog</a>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      <span>6 outils · Luxembourg · 100% gratuits</span>
+    </div>
+
+    <h1 class="hero-title">Mes apps trail</h1>
+    <span class="hero-title-line2">libres &amp; hors ligne</span>
+
+    <p class="hero-sub">
+      Pas de store. Pas de compte. Pas de données qui s'envolent.<br>
+      Tu me contactes, je t'envoie le lien. C'est tout.
+    </p>
+
+    <div class="hero-tags">
+      <span class="hero-tag">Zéro inscription</span>
+      <span class="hero-tag">100% offline</span>
+      <span class="hero-tag">Tes données chez toi</span>
+      <span class="hero-tag">Contact direct</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>↓</span>
+    <span style="font-size:9px;letter-spacing:2px;font-family:'Syne',sans-serif;font-weight:600">SCROLL</span>
+  </div>
+</section>
+
+<!-- ═══════ APPS ═══════ -->
+<section class="apps-section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">Les outils</span>
+    <span class="section-line"></span>
+  </div>
+
+  <div class="apps-grid">
+
+    <!-- 1 · PLAN FEMME — large -->
+    <div class="app-card wide fade-up">
+      <div class="app-img-wrap">
+        <img class="app-img"
+          src="https://run-nature.com/wp-content/uploads/2026/05/Capture-plan-norvegien-pour-femme-avec-pris-en-compte-des-cycles-menstruels-2.jpg"
+          alt="Plan Norvégien Femme" loading="lazy">
+      </div>
+      <div class="app-body">
+        <div class="app-badges">
+          <span class="badge b-free">Gratuit</span>
+          <span class="badge b-f">Femme</span>
+          <span class="badge b-new">Nouveau</span>
+        </div>
+        <div class="app-name">Plan Norvégien Trail Femme + Cycle</div>
+        <div class="app-desc">12 semaines de méthode norvégienne adaptée au cycle menstruel. Chaque séance ajustée selon la phase hormonale. Cases à cocher, résumé semaine, export PDF.</div>
+        <div class="app-footer">
+          <span class="app-free-label">Accès gratuit</span>
+          <a class="btn-wa" href="#" onclick="openWA('Plan Norvégien Trail Femme + Cycle');return false;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Je suis intéressé(e)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 · PLAN HOMME — large -->
+    <div class="app-card wide fade-up">
+      <div class="app-img-wrap">
+        <img class="app-img"
+          src="https://run-nature.com/wp-content/uploads/2026/05/Capture-plan-norvegien-pour-homme-2.jpg"
+          alt="Plan Norvégien Homme" loading="lazy">
+      </div>
+      <div class="app-body">
+        <div class="app-badges">
+          <span class="badge b-free">Gratuit</span>
+          <span class="badge b-h">Homme</span>
+          <span class="badge b-new">Nouveau</span>
+        </div>
+        <div class="app-name">Plan Norvégien Trail Homme M35–M65</div>
+        <div class="app-desc">12 semaines, de 5 km à 100 km. Adapté par catégorie d'âge M35 à M65. Bascule en Norwegian Singles pour les ultra ≥100 km.</div>
+        <div class="app-footer">
+          <span class="app-free-label">Accès gratuit</span>
+          <a class="btn-wa" href="#" onclick="openWA('Plan Norvégien Trail Homme M35–M65');return false;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Je suis intéressé(e)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · DASHBOARD -->
+    <div class="app-card fade-up">
+      <div class="app-img-wrap">
+        <img class="app-img"
+          src="https://run-nature.com/wp-content/uploads/2026/05/Mon-Dashboard-Trail-–-Suis-ta-preparation-comme-un-pro.jpg"
+          alt="Dashboard Trail" loading="lazy">
+      </div>
+      <div class="app-body">
+        <div class="app-badges">
+          <span class="badge b-free">Gratuit</span>
+          <span class="badge b-off">Offline</span>
+        </div>
+        <div class="app-name">Dashboard Suivi Préparation Trail</div>
+        <div class="app-desc">Journal des séances, import GPX, graphiques, dénivelé, compte à rebours. Version 22 — avril 2026.</div>
+        <div class="app-footer">
+          <span class="app-free-label">Accès gratuit</span>
+          <a class="btn-wa" href="#" onclick="openWA('Dashboard Suivi Préparation Trail v22');return false;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Intéressé(e)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 · MINUTEUR -->
+    <div class="app-card fade-up">
+      <div class="app-img-wrap">
+        <img class="app-img"
+          src="https://run-nature.com/wp-content/uploads/2026/05/Minuteur-Fractionne-Trail-et-HIIT-Gratuit-—-Tabata-Cotes-Endurance-—-Sans-Pub-Offline.jpg"
+          alt="Minuteur HIIT" loading="lazy">
+      </div>
+      <div class="app-body">
+        <div class="app-badges">
+          <span class="badge b-free">Gratuit</span>
+          <span class="badge b-off">Offline</span>
+        </div>
+        <div class="app-name">Minuteur HIIT & Fractionné</div>
+        <div class="app-desc">Tabata, HIIT, Côtes, Endurance. Annonces vocales, compte à rebours 3-2-1. Sans pub, sans connexion.</div>
+        <div class="app-footer">
+          <span class="app-free-label">Accès gratuit</span>
+          <a class="btn-wa" href="#" onclick="openWA('Minuteur HIIT & Fractionné');return false;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Intéressé(e)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 · CALCULATEUR -->
+    <div class="app-card fade-up">
+      <div class="app-img-wrap">
+        <img class="app-img"
+          src="https://run-nature.com/wp-content/uploads/2026/05/Tu-pars-avec-combien-de-gels.jpg"
+          alt="Calculateur gels" loading="lazy">
+      </div>
+      <div class="app-body">
+        <div class="app-badges">
+          <span class="badge b-free">Gratuit</span>
+          <span class="badge b-h">H</span>
+          <span class="badge b-f">F</span>
+        </div>
+        <div class="app-name">Calculateur Splits + Ravito</div>
+        <div class="app-desc">Splits km par km, heure réelle à chaque passage, plan ravito glucides + eau, nombre de gels. Export PDF race-ready.</div>
+        <div class="app-footer">
+          <span class="app-free-label">Accès gratuit</span>
+          <a class="btn-wa" href="#" onclick="openWA('Calculateur Temps de Passage + Ravito');return false;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Intéressé(e)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 · TRAILS LUX -->
+    <div class="app-card fade-up">
+      <div class="app-img-wrap">
+        <div class="app-img-placeholder">🗺️</div>
+      </div>
+      <div class="app-body">
+        <div class="app-badges">
+          <span class="badge b-free">Gratuit</span>
+          <span class="badge b-new">Nouveau</span>
+          <span class="badge b-off">Android</span>
+        </div>
+        <div class="app-name">App Trails Luxembourg</div>
+        <div class="app-desc">68 sentiers officiels + GPX de courses. Par région et difficulté. Carte interactive, profil altimétrique. Sans Play Store.</div>
+        <div class="app-footer">
+          <span class="app-free-label">Accès gratuit</span>
+          <a class="btn-wa" href="#" onclick="openWA('App Trails Luxembourg — 68 sentiers GPX');return false;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Intéressé(e)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section class="contact-section">
+  <div class="contact-inner">
+    <span class="contact-label">Comment ça marche</span>
+    <h2 class="contact-title">Tu vois une app<br>qui t'intéresse ?<br><em>Écris-moi.</em></h2>
+    <p class="contact-desc">
+      Clique sur "Je suis intéressé(e)", dis-moi quelle app tu veux et laisse-moi ton adresse mail.<br>
+      Je t'envoie le lien directement. Aucune donnée collectée, aucun formulaire, aucune bullshit.
+    </p>
+    <a class="btn-wa-big"
+      href="https://wa.me/352691135932?text=Bonjour%20S%C3%A9bastien%20!%20%F0%9F%91%8B%0AJe%20suis%20int%C3%A9ress%C3%A9(e)%20par%20tes%20apps%20trail."
+      target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Écrire à Sébastien
+    </a>
+    <p class="contact-note">Réponse sous 24h · Lien envoyé par mail · Aucune donnée stockée</p>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <p>© 2026 Run Nature · Luxembourg</p>
+  <p><a href="https://run-nature.com">run-nature.com</a></p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const WA = '352691135932';
+
+  function openWA(app) {
+    var msg = encodeURIComponent(
+      'Bonjour Sébastien ! 👋\n\n' +
+      'Je suis intéressé(e) par : *' + app + '*\n\n' +
+      'Mon adresse mail : \n\n' +
+      'Merci ! 🏔️'
+    );
+    window.open('https://wa.me/' + WA + '?text=' + msg, '_blank');
+    showToast('💬 WhatsApp en cours d\'ouverture…');
+  }
+
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show'); }, 3000);
+  }
+
+  /* Animations au scroll */
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e, i) {
+      if (e.isIntersecting) {
+        setTimeout(function() {
+          e.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
